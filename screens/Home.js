@@ -37,7 +37,15 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <Text
+        style={{
+          marginTop: SIZES.radius,
+          marginHorizontal: SIZES.padding,
+          ...FONTS.largeTitleBold,
+        }}
+      >
+        Trending
+      </Text>
     </View>
   );
 };
