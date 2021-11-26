@@ -5,6 +5,7 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import { COLORS, images, icons, FONTS, SIZES } from "../constants";
 
@@ -60,9 +61,32 @@ const Home = () => {
             marginTop: SIZES.base,
             borderTopLeftRadius: 10,
             marginRight: SIZES.padding,
+            paddingLeft: SIZES.radius,
+            paddingRight: SIZES.padding,
+            paddingBottom: SIZES.radius,
             backgroundColor: item.bgColor,
           }}
-        ></View>
+        >
+          <View style={{ height: "35%", justifyContent: "space-between" }}>
+            <Text style={{ color: COLORS.white, ...FONTS.body4 }}>
+              {item.name}
+            </Text>
+            <Text style={{ color: COLORS.white, ...FONTS.h3 }}>
+              {item.price}
+            </Text>
+          </View>
+        </View>
+        <Image
+          source={item.img}
+          resizeMode="cover"
+          style={{
+            position: "absolute",
+            top: 50,
+            right: 0,
+            width: "98%",
+            height: 80,
+          }}
+        />
       </TouchableOpacity>
     );
   }
