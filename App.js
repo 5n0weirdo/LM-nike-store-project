@@ -44,6 +44,21 @@ const App = () => {
                 ></Image>
               </TouchableOpacity>
             ),
+            headerRight: () => (
+              <TouchableOpacity
+                style={{ marginRight: SIZES.padding }}
+                onPress={() => console.log("Pressed")}
+              >
+                <Image
+                  source={icons.search}
+                  resizeMode="contain"
+                  style={{
+                    width: 30,
+                    height: 30,
+                  }}
+                />
+              </TouchableOpacity>
+            ),
           }}
         />
       </Stack.Navigator>
