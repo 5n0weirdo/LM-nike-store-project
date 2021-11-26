@@ -1,5 +1,11 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import { COLORS, images, icons, FONTS, SIZES } from "../constants";
 
 const Home = () => {
@@ -35,6 +41,32 @@ const Home = () => {
     },
   ]);
 
+  // Render
+  function renderTrendingShoes(item, index) {
+    return (
+      <TouchableOpacity
+        style={{
+          height: 240,
+          width: 180,
+          justifyContent: "center",
+          marginHorizontal: SIZES.base,
+        }}
+      >
+        <Text style={{ color: COLORS.gray, ...FONTS.h5 }}>{item.type}</Text>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            marginTop: SIZES.base,
+            borderTopLeftRadius: 10,
+            marginRight: SIZES.padding,
+            backgroundColor: item.bgColor,
+          }}
+        ></View>
+      </TouchableOpacity>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Text
@@ -46,6 +78,17 @@ const Home = () => {
       >
         Trending
       </Text>
+
+      {/* Trending */}
+      <View style={{ height: 200, marginTop: SIZES.radius }}>
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={trending}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item, index }) => renderTrendingShoes(item, index)}
+        />
+      </View>
     </View>
   );
 };
